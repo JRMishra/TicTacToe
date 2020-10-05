@@ -13,6 +13,7 @@ namespace TicTacToe
             ticTacToeGame.StartGame();
             ticTacToeGame.UsersChoice();
             ticTacToeGame.ShowBoard();
+            ticTacToeGame.UserMove();
         }
     }
 }

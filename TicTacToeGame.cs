@@ -62,5 +62,18 @@ namespace TicTacToe
                 }
             }
         }
+
+        public void UserMove()
+        {
+            Console.WriteLine("Enter index (1-9) to mark your choice :");
+            int userMove = Convert.ToInt32(Console.ReadLine());
+            if (_board[userMove] == ' ')
+                _board[userMove] = _userChoice;
+            else
+            {
+                Console.WriteLine("The Index isn't empty");
+                UserMove();
+            }
+        }
     }
 }
