@@ -190,5 +190,52 @@ namespace TicTacToe
 
             return 0;
         }
+        
+        public int BlockWinningMove()
+        {
+            if (_board[1]==' ' && ((_board[2] == _userChoice && _board[3] == _userChoice) ||
+                (_board[5] == _userChoice && _board[9] == _userChoice) ||
+                (_board[4] == _userChoice && _board[7] == _userChoice)))
+                return 1;
+
+            if (_board[2] == ' ' && ((_board[1] == _userChoice && _board[3] == _userChoice) ||
+                (_board[5] == _userChoice && _board[8] == _userChoice)))
+                return 2; 
+
+            if (_board[3] == ' ' && ((_board[1] == _userChoice && _board[2] == _userChoice) ||
+                (_board[6] == _userChoice && _board[9] == _userChoice) ||
+                (_board[5] == _userChoice && _board[7] == _userChoice)))
+                return 3;
+
+            if (_board[4] == ' ' && ((_board[5] == _userChoice && _board[6] == _userChoice) ||
+               (_board[1] == _userChoice && _board[7] == _userChoice)))
+                return 4;
+
+            if (_board[5] == ' ' && ((_board[4] == _userChoice && _board[6] == _userChoice) ||
+               (_board[2] == _userChoice && _board[8] == _userChoice) ||
+               (_board[1] == _userChoice && _board[9] == _userChoice) ||
+               (_board[3] == _userChoice && _board[7] == _userChoice)))
+                return 5;
+
+            if (_board[6] == ' ' && ((_board[4] == _userChoice && _board[5] == _userChoice) ||
+               (_board[3] == _userChoice && _board[9] == _userChoice)))
+                return 6;
+
+            if (_board[7] == ' ' && ((_board[1] == _userChoice && _board[4] == _userChoice) ||
+               (_board[8] == _userChoice && _board[9] == _userChoice) ||
+               (_board[3] == _userChoice && _board[5] == _userChoice)))
+                return 7;
+
+            if (_board[8] == ' ' && ((_board[2] == _userChoice && _board[5] == _userChoice) ||
+               (_board[7] == _userChoice && _board[9] == _userChoice)))
+                return 8;
+
+            if (_board[9] == ' ' && ((_board[1] == _userChoice && _board[5] == _userChoice) ||
+               (_board[7] == _userChoice && _board[8] == _userChoice) ||
+               (_board[3] == _userChoice && _board[6] == _userChoice)))
+                return 9;
+
+            return 0;
+        }
     }
 }

@@ -18,7 +18,11 @@ namespace TicTacToe
             while(!ticTacToeGame.IsGameOver())
             {
                 if (!usersChance)
+                {
                     Console.WriteLine("Winning move for system " + ticTacToeGame.CheckWinningMove());
+                    Console.WriteLine("To block opponent from winning " + ticTacToeGame.BlockWinningMove());
+                }
+                    
                 ticTacToeGame.UserMove();
                 ticTacToeGame.MakeMove(usersChance);
 
