@@ -17,17 +17,20 @@ namespace TicTacToe
             usersChance= ticTacToeGame.TossToStartFirst();
             while(!ticTacToeGame.IsGameOver())
             {
-                if (!usersChance)
+                if (usersChance)
                 {
-                    Console.WriteLine("Winning move for system " + ticTacToeGame.CheckWinningMove());
-                    Console.WriteLine("To block opponent from winning " + ticTacToeGame.BlockWinningMove());
-                    Console.WriteLine("Available Corner " + ticTacToeGame.AvailableCorner());
-                    Console.WriteLine("Other option " + ticTacToeGame.OtherAvailableOption());
+                    Console.WriteLine("Player's chance");
+                    Console.WriteLine("----------------");
+                    int userIndex = ticTacToeGame.UserMove();
+                    ticTacToeGame.MakeMove(usersChance,userIndex);
                 }
-                    
-                ticTacToeGame.UserMove();
-                ticTacToeGame.MakeMove(usersChance);
-
+                else
+                {
+                    Console.WriteLine("System's chance");
+                    Console.WriteLine("----------------");
+                    int userIndex = ticTacToeGame.SuggestIndex();
+                    ticTacToeGame.MakeMove(usersChance, userIndex);
+                }   
                 usersChance = !usersChance;
             }
         }

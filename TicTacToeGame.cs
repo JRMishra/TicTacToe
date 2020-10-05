@@ -67,7 +67,7 @@ namespace TicTacToe
             }
         }
 
-        public void UserMove()
+        public int UserMove()
         {
             Console.WriteLine("Enter index (1-9) to mark your choice :");
             int userMove = Convert.ToInt32(Console.ReadLine());
@@ -86,11 +86,12 @@ namespace TicTacToe
                 Console.WriteLine("Index should be between 1 to 9");
                 UserMove();
             }
+            return currUserInput;
         }
 
-        public void MakeMove(bool isUser)
+        public void MakeMove(bool isUser, int valIndex)
         {
-            _board[currUserInput] =isUser ? _userChoice : _systemChoice;
+            _board[valIndex] = isUser ? _userChoice : _systemChoice;
             _filledCell++;
             ShowBoard();
         }
@@ -144,7 +145,7 @@ namespace TicTacToe
 
         }
 
-        public int CheckWinningMove()
+        private int CheckWinningMove()
         {
             if (_board[1]==' ' && ((_board[2] == _systemChoice && _board[3] == _systemChoice) ||
                 (_board[5] == _systemChoice && _board[9] == _systemChoice) ||
@@ -191,7 +192,7 @@ namespace TicTacToe
             return 0;
         }
         
-        public int BlockWinningMove()
+        private int BlockOppositionWinningMove()
         {
             if (_board[1]==' ' && ((_board[2] == _userChoice && _board[3] == _userChoice) ||
                 (_board[5] == _userChoice && _board[9] == _userChoice) ||
@@ -238,7 +239,7 @@ namespace TicTacToe
             return 0;
         }
     
-        public int AvailableCorner()
+        private int AvailableCorner()
         {
             if (_board[1] == ' ')
                 return 1;
@@ -251,7 +252,7 @@ namespace TicTacToe
             return 0;
         }
 
-        public int OtherAvailableOption()
+        private int OtherAvailableOption()
         {
             if (_board[5] == ' ')
                 return 5;
@@ -264,6 +265,20 @@ namespace TicTacToe
             if (_board[8] == ' ')
                 return 8;
             return 0;
+        }
+
+        public int SuggestIndex()
+        {
+            int toWin = CheckWinningMove();
+            if (toWin != 0)
+                return toWin;
+            int toStop = BlockOppositionWinningMove();
+            if (toStop != 0)
+                return toStop;
+            int corner = AvailableCorner();
+            if (corner != 0)
+                return corner;
+            return OtherAvailableOption();
         }
     }
 }
