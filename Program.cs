@@ -13,8 +13,17 @@ namespace TicTacToe
             ticTacToeGame.StartGame();
             ticTacToeGame.UsersChoice();
             ticTacToeGame.ShowBoard();
-            ticTacToeGame.UserMove();
-            ticTacToeGame.MakeMove();
+            ticTacToeGame.TossToStartFirst();
+            if(ticTacToeGame.UserWonToss)
+            {
+                ticTacToeGame.UserMove();
+                ticTacToeGame.MakeMove();
+            }
+            else
+            {
+                ticTacToeGame.UserMove();
+                ticTacToeGame.MakeMove();
+            }
         }
     }
 }

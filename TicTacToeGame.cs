@@ -10,6 +10,7 @@ namespace TicTacToe
         char _userChoice;
         char _systemChoice;
         int currUserInput;
+        bool _userWonToss;
 
         public TicTacToeGame()
         {
@@ -19,6 +20,7 @@ namespace TicTacToe
         public char[] Board { get => _board; }
         public char UserChoice { get => _userChoice; }
         public char SystemChoice { get => _systemChoice; }
+        public bool UserWonToss { get => _userWonToss; }
 
         public void StartGame()
         {
@@ -87,7 +89,21 @@ namespace TicTacToe
 
         public void MakeMove()
         {
-            _board[currUserInput] = _userChoice;
+            _board[currUserInput] = _userWonToss ? _userChoice : _systemChoice;
+            ShowBoard();
+        }
+
+        public void TossToStartFirst()
+        {
+            Console.WriteLine("Choose Head / Tail to start first");
+            string userChoice = Console.ReadLine().ToLower();
+            string[] coin = new string[2] { "head", "tail" };
+            Random toss = new Random();
+            _userWonToss= (coin[toss.Next(0, 2)] == userChoice);
+            if (_userWonToss)
+                Console.WriteLine("You won the toss");
+            else
+                Console.WriteLine("You lose the toss");
         }
     }
 }
