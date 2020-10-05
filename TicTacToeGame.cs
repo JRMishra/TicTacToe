@@ -49,7 +49,7 @@ namespace TicTacToe
 
         public void ShowBoard()
         {
-            for(int i = 1; i < 10; i++)
+            for (int i = 1; i < 10; i++)
             {
                 if (i % 3 == 0)
                 {
@@ -67,11 +67,19 @@ namespace TicTacToe
         {
             Console.WriteLine("Enter index (1-9) to mark your choice :");
             int userMove = Convert.ToInt32(Console.ReadLine());
-            if (_board[userMove] == ' ')
-                _board[userMove] = _userChoice;
+            if (userMove > 0 && userMove < 10)
+            {
+                if (_board[userMove] == ' ')
+                    _board[userMove] = _userChoice;
+                else
+                {
+                    Console.WriteLine("The given Index isn't empty");
+                    UserMove();
+                }
+            }
             else
             {
-                Console.WriteLine("The Index isn't empty");
+                Console.WriteLine("Index should be between 1 to 9");
                 UserMove();
             }
         }
