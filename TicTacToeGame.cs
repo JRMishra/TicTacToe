@@ -237,5 +237,18 @@ namespace TicTacToe
 
             return 0;
         }
+    
+        public int AvailableCorner()
+        {
+            if (_board[1] == ' ')
+                return 1;
+            if (_board[3] == ' ')
+                return 3;
+            if (_board[7] == ' ')
+                return 7;
+            if (_board[9] == ' ')
+                return 9;
+            return 0;
+        }
     }
 }
