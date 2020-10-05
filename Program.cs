@@ -17,6 +17,8 @@ namespace TicTacToe
             usersChance= ticTacToeGame.TossToStartFirst();
             while(!ticTacToeGame.IsGameOver())
             {
+                if (!usersChance)
+                    Console.WriteLine("Winning move for system " + ticTacToeGame.CheckWinningMove());
                 ticTacToeGame.UserMove();
                 ticTacToeGame.MakeMove(usersChance);
 

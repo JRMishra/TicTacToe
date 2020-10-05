@@ -134,7 +134,7 @@ namespace TicTacToe
             if (isUserWinner)
                 Console.WriteLine("User won it");
             else if (isSystemWinner)
-                Console.WriteLine("User lose it");
+                Console.WriteLine("System Won it");
             else if(over)
                 Console.WriteLine("No more free move\nTie...");
             else
@@ -142,6 +142,53 @@ namespace TicTacToe
 
             return (isUserWinner || isSystemWinner || over);
 
+        }
+
+        public int CheckWinningMove()
+        {
+            if (_board[1]==' ' && ((_board[2] == _systemChoice && _board[3] == _systemChoice) ||
+                (_board[5] == _systemChoice && _board[9] == _systemChoice) ||
+                (_board[4] == _systemChoice && _board[7] == _systemChoice)))
+                return 1;
+
+            if (_board[2] == ' ' && ((_board[1] == _systemChoice && _board[3] == _systemChoice) ||
+                (_board[5] == _systemChoice && _board[8] == _systemChoice)))
+                return 2; 
+
+            if (_board[3] == ' ' && ((_board[1] == _systemChoice && _board[2] == _systemChoice) ||
+                (_board[6] == _systemChoice && _board[9] == _systemChoice) ||
+                (_board[5] == _systemChoice && _board[7] == _systemChoice)))
+                return 3;
+
+            if (_board[4] == ' ' && ((_board[5] == _systemChoice && _board[6] == _systemChoice) ||
+               (_board[1] == _systemChoice && _board[7] == _systemChoice)))
+                return 4;
+
+            if (_board[5] == ' ' && ((_board[4] == _systemChoice && _board[6] == _systemChoice) ||
+               (_board[2] == _systemChoice && _board[8] == _systemChoice) ||
+               (_board[1] == _systemChoice && _board[9] == _systemChoice) ||
+               (_board[3] == _systemChoice && _board[7] == _systemChoice)))
+                return 5;
+
+            if (_board[6] == ' ' && ((_board[4] == _systemChoice && _board[5] == _systemChoice) ||
+               (_board[3] == _systemChoice && _board[9] == _systemChoice)))
+                return 6;
+
+            if (_board[7] == ' ' && ((_board[1] == _systemChoice && _board[4] == _systemChoice) ||
+               (_board[8] == _systemChoice && _board[9] == _systemChoice) ||
+               (_board[3] == _systemChoice && _board[5] == _systemChoice)))
+                return 7;
+
+            if (_board[8] == ' ' && ((_board[2] == _systemChoice && _board[5] == _systemChoice) ||
+               (_board[7] == _systemChoice && _board[9] == _systemChoice)))
+                return 8;
+
+            if (_board[9] == ' ' && ((_board[1] == _systemChoice && _board[5] == _systemChoice) ||
+               (_board[7] == _systemChoice && _board[8] == _systemChoice) ||
+               (_board[3] == _systemChoice && _board[6] == _systemChoice)))
+                return 9;
+
+            return 0;
         }
     }
 }
