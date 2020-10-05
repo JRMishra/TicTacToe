@@ -46,5 +46,15 @@ namespace TicTacToe
                 UsersChoice();
             }
         }
+
+        public void ShowBoard()
+        {
+            for(int i = 1; i < 10; i++)
+            {
+                Console.Write(_board[i] + " | ");
+                if (i % 3 == 0)
+                    Console.WriteLine("\n____________");
+            }
+        }
     }
 }
