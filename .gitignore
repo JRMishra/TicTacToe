@@ -55,6 +55,7 @@ BenchmarkDotNet.Artifacts/
 project.lock.json
 project.fragment.lock.json
 artifacts/
+bin/
 
 # StyleCop
 StyleCopReport.xml
@@ -339,5 +340,5 @@ ASALocalRun/
 # BeatPulse healthcheck temp database
 healthchecksdb
 
-obj/
-bin/
+*obj/
+*bin/
