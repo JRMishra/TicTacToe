@@ -9,9 +9,7 @@ namespace TicTacToe
         char[] _board;
         char _userChoice;
         char _systemChoice;
-        int currUserInput;
-        bool _userWonToss;
-        int _filledCell=0;
+        int _filledCell;
 
         public TicTacToeGame()
         {
@@ -21,7 +19,7 @@ namespace TicTacToe
         public char[] Board { get => _board; }
         public char UserChoice { get => _userChoice; }
         public char SystemChoice { get => _systemChoice; }
-        public bool UserWonToss { get => _userWonToss; }
+        public bool IsTheGameOver { get => IsGameOver(); }
 
         public void StartGame()
         {
@@ -29,6 +27,7 @@ namespace TicTacToe
             {
                 _board[i] = ' ';
             }
+            _filledCell = 0;
         }
 
         public void UsersChoice()
@@ -71,22 +70,20 @@ namespace TicTacToe
         {
             Console.WriteLine("Enter index (1-9) to mark your choice :");
             int userMove = Convert.ToInt32(Console.ReadLine());
-            if (userMove > 0 && userMove < 10)
+            if (userMove < 1 && userMove > 9)
             {
-                if (_board[userMove] == ' ')
-                    currUserInput = userMove;   
-                else
-                {
-                    Console.WriteLine("The given Index isn't empty");
-                    UserMove();
-                }
+                Console.WriteLine("Index should be between 1 to 9");
+                userMove= UserMove();   
             }
             else
             {
-                Console.WriteLine("Index should be between 1 to 9");
-                UserMove();
+                if (_board[userMove] != ' ')
+                {
+                    Console.WriteLine("The given Index isn't empty");
+                    userMove = UserMove();
+                }
             }
-            return currUserInput;
+            return userMove;
         }
 
         public void MakeMove(bool isUser, int valIndex)
@@ -98,6 +95,7 @@ namespace TicTacToe
 
         public bool TossToStartFirst()
         {
+            bool _userWonToss;
             Console.WriteLine("Choose Head / Tail to start first");
             string userChoice = Console.ReadLine().ToLower();
             string[] coin = new string[2] { "head", "tail" };

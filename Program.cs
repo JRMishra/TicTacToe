@@ -10,29 +10,40 @@ namespace TicTacToe
             Console.WriteLine("-------------------------");
 
             bool usersChance;
+            int userChoice = 1;
+            int index;
             TicTacToeGame ticTacToeGame = new TicTacToeGame();
-            ticTacToeGame.StartGame();
-            ticTacToeGame.UsersChoice();
-            ticTacToeGame.ShowBoard();
-            usersChance= ticTacToeGame.TossToStartFirst();
-            while(!ticTacToeGame.IsGameOver())
+            do
             {
-                if (usersChance)
+                ticTacToeGame.StartGame();
+                ticTacToeGame.UsersChoice();
+                ticTacToeGame.ShowBoard();
+                usersChance = ticTacToeGame.TossToStartFirst();
+                while (!ticTacToeGame.IsTheGameOver)
                 {
-                    Console.WriteLine("Player's chance");
-                    Console.WriteLine("----------------");
-                    int userIndex = ticTacToeGame.UserMove();
-                    ticTacToeGame.MakeMove(usersChance,userIndex);
+                    if (usersChance)
+                    {
+                        Console.WriteLine("Player's chance");
+                        Console.WriteLine("----------------");
+                        index = ticTacToeGame.UserMove();
+                        
+                    }
+                    else
+                    {
+                        Console.WriteLine("System's chance");
+                        Console.WriteLine("----------------");
+                        index = ticTacToeGame.SuggestIndex();
+                    }
+                    ticTacToeGame.MakeMove(usersChance, index);
+
+                    usersChance = !usersChance;
                 }
-                else
-                {
-                    Console.WriteLine("System's chance");
-                    Console.WriteLine("----------------");
-                    int userIndex = ticTacToeGame.SuggestIndex();
-                    ticTacToeGame.MakeMove(usersChance, userIndex);
-                }   
-                usersChance = !usersChance;
-            }
+
+                Console.WriteLine("Enter\n" +
+                "1 : Play Again\n" +
+                "0 : Exit");
+                userChoice = Int32.Parse(Console.ReadLine());
+            } while (userChoice == 1);
         }
     }
 }
