@@ -11,6 +11,7 @@ namespace TicTacToe
         char _systemChoice;
         int currUserInput;
         bool _userWonToss;
+        int _filledCell=0;
 
         public TicTacToeGame()
         {
@@ -87,13 +88,14 @@ namespace TicTacToe
             }
         }
 
-        public void MakeMove()
+        public void MakeMove(bool isUser)
         {
-            _board[currUserInput] = _userWonToss ? _userChoice : _systemChoice;
+            _board[currUserInput] =isUser ? _userChoice : _systemChoice;
+            _filledCell++;
             ShowBoard();
         }
 
-        public void TossToStartFirst()
+        public bool TossToStartFirst()
         {
             Console.WriteLine("Choose Head / Tail to start first");
             string userChoice = Console.ReadLine().ToLower();
@@ -104,6 +106,42 @@ namespace TicTacToe
                 Console.WriteLine("You won the toss");
             else
                 Console.WriteLine("You lose the toss");
+
+            return _userWonToss;
+        }
+
+        public bool IsGameOver()
+        {
+            bool isUserWinner = ((_board[1] == _userChoice && _board[2] == _userChoice && _board[3] == _userChoice) ||
+                          (_board[4] == _userChoice && _board[5] == _userChoice && _board[6] == _userChoice) ||
+                          (_board[7] == _userChoice && _board[8] == _userChoice && _board[9] == _userChoice) ||
+                          (_board[1] == _userChoice && _board[4] == _userChoice && _board[7] == _userChoice) ||
+                          (_board[2] == _userChoice && _board[5] == _userChoice && _board[8] == _userChoice) ||
+                          (_board[3] == _userChoice && _board[6] == _userChoice && _board[9] == _userChoice) ||
+                          (_board[1] == _userChoice && _board[5] == _userChoice && _board[9] == _userChoice) ||
+                          (_board[3] == _userChoice && _board[5] == _userChoice && _board[7] == _userChoice));
+            bool isSystemWinner = ((_board[1] == _systemChoice && _board[2] == _systemChoice && _board[3] == _systemChoice) ||
+                          (_board[4] == _systemChoice && _board[5] == _systemChoice && _board[6] == _systemChoice) ||
+                          (_board[7] == _systemChoice && _board[8] == _systemChoice && _board[9] == _systemChoice) ||
+                          (_board[1] == _systemChoice && _board[4] == _systemChoice && _board[7] == _systemChoice) ||
+                          (_board[2] == _systemChoice && _board[5] == _systemChoice && _board[8] == _systemChoice) ||
+                          (_board[3] == _systemChoice && _board[6] == _systemChoice && _board[9] == _systemChoice) ||
+                          (_board[1] == _systemChoice && _board[5] == _systemChoice && _board[9] == _systemChoice) ||
+                          (_board[3] == _systemChoice && _board[5] == _systemChoice && _board[7] == _systemChoice));
+
+            bool over = (_filledCell == 9);
+
+            if (isUserWinner)
+                Console.WriteLine("User won it");
+            else if (isSystemWinner)
+                Console.WriteLine("User lose it");
+            else if(over)
+                Console.WriteLine("No more free move\nTie...");
+            else
+                Console.WriteLine("Continue...");
+
+            return (isUserWinner || isSystemWinner || over);
+
         }
     }
 }

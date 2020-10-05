@@ -9,20 +9,18 @@ namespace TicTacToe
             Console.WriteLine("Welcome to TicTcToe Game");
             Console.WriteLine("-------------------------");
 
+            bool usersChance;
             TicTacToeGame ticTacToeGame = new TicTacToeGame();
             ticTacToeGame.StartGame();
             ticTacToeGame.UsersChoice();
             ticTacToeGame.ShowBoard();
-            ticTacToeGame.TossToStartFirst();
-            if(ticTacToeGame.UserWonToss)
+            usersChance= ticTacToeGame.TossToStartFirst();
+            while(!ticTacToeGame.IsGameOver())
             {
                 ticTacToeGame.UserMove();
-                ticTacToeGame.MakeMove();
-            }
-            else
-            {
-                ticTacToeGame.UserMove();
-                ticTacToeGame.MakeMove();
+                ticTacToeGame.MakeMove(usersChance);
+
+                usersChance = !usersChance;
             }
         }
     }
