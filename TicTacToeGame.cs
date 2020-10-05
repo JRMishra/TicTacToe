@@ -7,6 +7,8 @@ namespace TicTacToe
     class TicTacToeGame
     {
         char[] _board;
+        char _userChoice;
+        char _systemChoice;
 
         public TicTacToeGame()
         {
@@ -14,12 +16,31 @@ namespace TicTacToe
         }
 
         public char[] Board { get => _board; }
+        public char UserChoice { get => _userChoice; }
+        public char SystemChoice { get => _systemChoice; }
 
         public void StartGame()
         {
             for (int i = 1; i < 10; i++)
             {
                 _board[i] = ' ';
+            }
+        }
+
+        public void UsersChoice(char ch)
+        {
+            if (ch == 'X' || ch == 'O')
+            {
+                _userChoice = ch;
+
+                if (ch == 'X')
+                    _systemChoice = 'O';
+                else
+                    _systemChoice = 'X';
+            }
+            else
+            {
+                Console.WriteLine("Wrong Choice");
             }
         }
     }
