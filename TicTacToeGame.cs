@@ -51,9 +51,15 @@ namespace TicTacToe
         {
             for(int i = 1; i < 10; i++)
             {
-                Console.Write(_board[i] + " | ");
                 if (i % 3 == 0)
-                    Console.WriteLine("\n____________");
+                {
+                    Console.Write(_board[i]);
+                    Console.WriteLine("\n----------");
+                }
+                else
+                {
+                    Console.Write(_board[i] + " | ");
+                }
             }
         }
     }
