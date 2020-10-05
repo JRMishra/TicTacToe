@@ -43,6 +43,7 @@ namespace TicTacToe
             else
             {
                 Console.WriteLine("Wrong Choice");
+                UsersChoice();
             }
         }
     }
