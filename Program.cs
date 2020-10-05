@@ -11,8 +11,6 @@ namespace TicTacToe
 
             TicTacToeGame ticTacToeGame = new TicTacToeGame();
             ticTacToeGame.StartGame();
-
-            return;
         }
     }
 }

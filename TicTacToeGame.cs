@@ -13,16 +13,14 @@ namespace TicTacToe
             _board = new char[10];
         }
 
-        public char[] Board { get => _board; set => StartGame(); }
+        public char[] Board { get => _board; }
 
         public void StartGame()
         {
-            for(int i=1;i<10;i++)
+            for (int i = 1; i < 10; i++)
             {
                 _board[i] = ' ';
             }
-            return;
         }
-
     }
 }
