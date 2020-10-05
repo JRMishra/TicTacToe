@@ -9,6 +9,7 @@ namespace TicTacToe
         char[] _board;
         char _userChoice;
         char _systemChoice;
+        int currUserInput;
 
         public TicTacToeGame()
         {
@@ -70,7 +71,7 @@ namespace TicTacToe
             if (userMove > 0 && userMove < 10)
             {
                 if (_board[userMove] == ' ')
-                    _board[userMove] = _userChoice;
+                    currUserInput = userMove;   
                 else
                 {
                     Console.WriteLine("The given Index isn't empty");
@@ -82,6 +83,11 @@ namespace TicTacToe
                 Console.WriteLine("Index should be between 1 to 9");
                 UserMove();
             }
+        }
+
+        public void MakeMove()
+        {
+            _board[currUserInput] = _userChoice;
         }
     }
 }

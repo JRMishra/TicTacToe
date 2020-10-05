@@ -14,6 +14,7 @@ namespace TicTacToe
             ticTacToeGame.UsersChoice();
             ticTacToeGame.ShowBoard();
             ticTacToeGame.UserMove();
+            ticTacToeGame.MakeMove();
         }
     }
 }
