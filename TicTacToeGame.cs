@@ -27,12 +27,14 @@ namespace TicTacToe
             }
         }
 
-        public void UsersChoice(char ch)
+        public void UsersChoice()
         {
+            Console.Write("Enter your choice to play further\n 'X' or 'O' ? ");
+            char ch = Convert.ToChar(Console.ReadLine());
+
             if (ch == 'X' || ch == 'O')
             {
                 _userChoice = ch;
-
                 if (ch == 'X')
                     _systemChoice = 'O';
                 else

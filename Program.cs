@@ -11,10 +11,7 @@ namespace TicTacToe
 
             TicTacToeGame ticTacToeGame = new TicTacToeGame();
             ticTacToeGame.StartGame();
-
-            Console.Write("Enter your choice to play further\n 'X' or 'O' ? ");
-            char userChoice = Convert.ToChar(Console.ReadLine());
-            ticTacToeGame.UsersChoice(userChoice);
+            ticTacToeGame.UsersChoice();
 
         }
     }
