@@ -250,5 +250,20 @@ namespace TicTacToe
                 return 9;
             return 0;
         }
+
+        public int OtherAvailableOption()
+        {
+            if (_board[5] == ' ')
+                return 5;
+            if (_board[2] == ' ')
+                return 2;
+            if (_board[4] == ' ')
+                return 4;
+            if (_board[6] == ' ')
+                return 6;
+            if (_board[8] == ' ')
+                return 8;
+            return 0;
+        }
     }
 }

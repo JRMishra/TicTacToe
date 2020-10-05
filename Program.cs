@@ -22,6 +22,7 @@ namespace TicTacToe
                     Console.WriteLine("Winning move for system " + ticTacToeGame.CheckWinningMove());
                     Console.WriteLine("To block opponent from winning " + ticTacToeGame.BlockWinningMove());
                     Console.WriteLine("Available Corner " + ticTacToeGame.AvailableCorner());
+                    Console.WriteLine("Other option " + ticTacToeGame.OtherAvailableOption());
                 }
                     
                 ticTacToeGame.UserMove();
